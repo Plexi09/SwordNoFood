@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu7kgrg5m047b"]
+[gd_scene load_steps=13 format=3 uid="uid://bu7kgrg5m047b"]
 
 [ext_resource type="PackedScene" uid="uid://dbd21fr1athct" path="res://scenes/player.tscn" id="1_xggnn"]
 [ext_resource type="Texture2D" uid="uid://ca57krj641oui" path="res://assets/sprites/world_tileset.png" id="2_0rv7l"]
 [ext_resource type="PackedScene" uid="uid://dxtanox1pnxnx" path="res://scenes/platform.tscn" id="3_ldhqo"]
 [ext_resource type="PackedScene" uid="uid://cvo47d5omr7wj" path="res://scenes/coin.tscn" id="4_cfox4"]
+[ext_resource type="PackedScene" uid="uid://qswi05h5wpxg" path="res://scenes/killzone.tscn" id="5_4j45q"]
+[ext_resource type="AudioStream" uid="uid://c40i0yp6q2v86" path="res://assets/music/gameover.mp3" id="6_1qamm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ovqm5"]
 texture = ExtResource("2_0rv7l")
@@ -445,6 +447,9 @@ _data = {
 "move": SubResource("Animation_dfkay")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_57k1x"]
+distance = -118.0
+
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -458,7 +463,10 @@ position = Vector2(-52, 3)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -6)
+scale = Vector2(0.963138, -391.524)
 zoom = Vector2(4, 4)
+limit_bottom = 120
+limit_smoothed = true
 position_smoothing_enabled = true
 
 [node name="Platform" parent="." instance=ExtResource("3_ldhqo")]
@@ -480,10 +488,18 @@ position = Vector2(251, 19)
 position = Vector2(-5, -45)
 
 [node name="Coin3" parent="." instance=ExtResource("4_cfox4")]
-position = Vector2(-5, 36)
+position = Vector2(-5, 35)
 
 [node name="Coin4" parent="." instance=ExtResource("4_cfox4")]
 position = Vector2(344, -1)
 
 [node name="Coin5" parent="." instance=ExtResource("4_cfox4")]
 position = Vector2(443, 19)
+
+[node name="Killzone" parent="." instance=ExtResource("5_4j45q")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape2D_57k1x")
+
+[node name="GameOver" type="AudioStreamPlayer" parent="Killzone"]
+stream = ExtResource("6_1qamm")
