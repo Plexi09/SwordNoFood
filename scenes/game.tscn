@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu7kgrg5m047b"]
+[gd_scene load_steps=16 format=3 uid="uid://bu7kgrg5m047b"]
 
 [ext_resource type="PackedScene" uid="uid://dbd21fr1athct" path="res://scenes/player.tscn" id="1_xggnn"]
 [ext_resource type="Texture2D" uid="uid://ca57krj641oui" path="res://assets/sprites/world_tileset.png" id="2_0rv7l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cvo47d5omr7wj" path="res://scenes/coin.tscn" id="4_cfox4"]
 [ext_resource type="PackedScene" uid="uid://qswi05h5wpxg" path="res://scenes/killzone.tscn" id="5_4j45q"]
 [ext_resource type="AudioStream" uid="uid://c40i0yp6q2v86" path="res://assets/music/gameover.mp3" id="6_1qamm"]
+[ext_resource type="PackedScene" uid="uid://d2adev6b7pnvr" path="res://scenes/zombie.tscn" id="8_db52d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ovqm5"]
 texture = ExtResource("2_0rv7l")
@@ -1283,3 +1284,6 @@ libraries = {
 "": SubResource("AnimationLibrary_yjwjy")
 }
 autoplay = "move"
+
+[node name="Zombie" parent="." instance=ExtResource("8_db52d")]
+position = Vector2(139, -38)

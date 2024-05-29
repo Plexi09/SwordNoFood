@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2adev6b7pnvr"]
+
+[ext_resource type="Texture2D" uid="uid://crtbrh8ag141s" path="res://assets/Images/Textures2D/Battlers/zombie.png" id="1_jquu5"]
+[ext_resource type="PackedScene" uid="uid://qswi05h5wpxg" path="res://scenes/killzone.tscn" id="2_7lj4l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7usqk"]
+atlas = ExtResource("1_jquu5")
+region = Rect2(0, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hycuc"]
+atlas = ExtResource("1_jquu5")
+region = Rect2(32, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qets"]
+atlas = ExtResource("1_jquu5")
+region = Rect2(64, 0, 32, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2dgv"]
+atlas = ExtResource("1_jquu5")
+region = Rect2(96, 0, 32, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lv5hn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7usqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hycuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qets")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2dgv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20b87"]
+size = Vector2(12, 17)
+
+[node name="Zombie" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -14)
+sprite_frames = SubResource("SpriteFrames_lv5hn")
+autoplay = "default"
+frame_progress = 0.644673
+
+[node name="Killzone" parent="." instance=ExtResource("2_7lj4l")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_20b87")
