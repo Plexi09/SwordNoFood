@@ -1286,4 +1286,4 @@ libraries = {
 autoplay = "move"
 
 [node name="Zombie" parent="." instance=ExtResource("8_db52d")]
-position = Vector2(139, -38)
+position = Vector2(539, 57)
